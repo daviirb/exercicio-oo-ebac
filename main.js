@@ -1,10 +1,13 @@
-function Celular(marca, modelo, status) {
-  this.marca = marca
-  this.modelo = modelo
-  this.status = status
+class Celular {
+  constructor(marca, modelo, valor, status) {
+    this.marca = marca
+    this.modelo = modelo
+    this.valor = valor
+    this.status = status
+  }
 
-  this.consultaDisponibilidade = function () {
-    if(status == 'disponivel') {
+  consultaDisponibilidade = () => {
+    if(this.status == 'disponivel') {
       console.log('Disponivel')
     } else {
       console.log('Nao disponivel')
@@ -13,25 +16,18 @@ function Celular(marca, modelo, status) {
 
 }
 
-function SmartPhone(marca, modelo, valor, status) {
-  this.valor = valor
-  
-  this.consultaPreco = function() {
+class SmartPhone extends Celular{
+
+  consultaPreco = () => {
     console.log('O ' + this.marca, '' + this.modelo, 'custa R$: ' +this.valor);
   }
-
-  Celular.call(this, marca, modelo, status)
 }
 
-function TelefoneFixo(marca, modelo, valor, status) {
+class TelefoneFixo extends Celular{
 
-  this.valor = valor
-  
-  this.consultaPreco = function() {
+  consultaPreco = () => {
     console.log('O ' + this.marca, '' + this.modelo, 'custa R$: ' +this.valor);
   }
-
-  Celular.call(this, marca, modelo, status)
 }
 
 const iphone = new SmartPhone('Apple','Iphone 14 Pro Max', 7500.00, 'disponivel')
